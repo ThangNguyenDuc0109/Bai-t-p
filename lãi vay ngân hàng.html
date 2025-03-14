@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Lãi Vay Ngân Hàng</title>
+</head>
+<body>
+<h2>Bảng Lãi Vay Ngân Hàng</h2>
+<form id=" nợ">
+  <table>
+    <th>Nhập thông tin:</th>
+    <td>Số tiền vay:</td>
+    <td><input type="number" id="Tongsotien" placeholder="Nhập số tiền vay"></td>
+    <td>Lãi suất (%):</td>
+    <td><input type="number" id="laisuat" placeholder="Nhập lãi suất"></td>
+    <td>Số năm vay:</td>
+    <td><input type="number" id="nam" placeholder="Nhập số năm vay"></td>
+    <td><button type="button" onclick="calculate()">Tính toán</button></td>
+  </table>
+</form>
+<h3>Kết quả:</h3>
+<p>Lãi phải trả: <span id="interestResult">0</span> VND</p>
+<p>Tổng số tiền: <span id="totalResult">0</span> VND</p>
+<script>
+  function calculate() {
+
+    // Lấy dữ liệu từ form
+    let Tongsotien = parseFloat(document.getElementById("Tongsotien").value);
+    let laisuat= parseFloat(document.getElementById("laisuat").value);
+    let nam = parseFloat(document.getElementById("nam").value);
+
+    // Kiểm tra giá trị hợp lệ
+    if (isNaN(Tongsotien) || isNaN(laisuat) || isNaN(nam)) {
+      return;
+    }
+
+    // Tính toán
+    let interest = Tongsotien * (laisuat / 100) * nam; // Lãi phải trả
+    let total = Tongsotien + interest; // Tongsotien
+
+    // Hiển thị kết quả
+    document.getElementById("interestResult").textContent = interest.toLocaleString('vi-VN');
+    document.getElementById("totalResult").textContent = total.toLocaleString('vi-VN');
+  }
+</script>
+</body>
+</html>
+
+
+
